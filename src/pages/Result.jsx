@@ -1,6 +1,6 @@
 import React, { use, useState } from 'react'
 import { assets } from '../assets/assets'
-
+import {motion} from "motion/react"
 const Result = () => {
   const [image, setImage] = useState(assets.sample_img_1);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
@@ -10,7 +10,12 @@ const Result = () => {
 
   }
   return (
-    <form onSubmit={onSubmitHandler} className='flex flex-col min-h-[90vh] justify-center
+    <motion.form 
+    initial={{opacity: 0.2, y:100}}
+    transition={{duration: 1}}
+    whileInView={{opacity: 1, y:0}}
+    viewport={{once: true}}
+    onSubmit={onSubmitHandler} className='flex flex-col min-h-[90vh] justify-center
     items-center'>
     <div>
       <div className='relative'>
@@ -48,7 +53,7 @@ const Result = () => {
     </div>
     }
 
-    </form>
+    </motion.form>
   )
 }
 
